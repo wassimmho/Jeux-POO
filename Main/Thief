@@ -16,7 +16,8 @@ namespace Game
             cible.RecevoirDegats(Degats);
 
             // Chance d'une attaque critique (20%)
-            if (random.NextDouble() < 0.2)
+            Random random = new Random();
+            if (random.Next(0, 100) < 20)
             {
                 Console.WriteLine($"{Nom} lands a critical hit!");
                 cible.RecevoirDegats(Degats);

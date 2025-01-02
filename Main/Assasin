@@ -1,0 +1,36 @@
+namespace Game
+{
+    public class Assassin : Personnage
+    {
+        public Assassin(string nom) : base(nom, 70, 20) // Points de vie et dégâts ajustés
+        {
+        }
+
+        public override void Attaquer(Personnage cible)
+        {
+            Console.WriteLine($"{Nom} silently approaches and strikes {cible.GetNom()}!");
+            cible.RecevoirDegats(Degats);
+
+            // Mécanique spéciale : Double attaque avec 25% de chance
+            Random random = new Random();
+            if (random.Next(0, 100) < 25) // 25% de chance
+            {
+                Console.WriteLine($"{Nom} performs a second attack!");
+                cible.RecevoirDegats(Degats / 2); // Dégâts supplémentaires (50% des dégâts initiaux)
+            }
+        }
+
+        public override void UtiliserCompetence(Personnage cible)
+        {
+            if (!AUtiliseCompetence())
+            {
+                Console.WriteLine($"{Nom} uses his special skill: Shadow strike");
+                cible.RecevoirDegats(Degats * 3);
+                UtiliserCompetence(); // Marquer la compétence comme utilisée
+            }else
+            {
+                Console.WriteLine($"{Nom} has already used his special skill!");
+            }
+        }
+    }
+}
