@@ -91,6 +91,7 @@ namespace Game
                         bot1 = guerrier;
                         bot2 = mage;
                         bot3 = voleur;
+                        break;
                     }
                 }
 
@@ -244,14 +245,14 @@ namespace Game
                     {
                         if (cibleBot2 != null)
                         {
-                            bot1.Attaquer(cibleBot2);
+                            bot2.Attaquer(cibleBot2);
                         }
                     }
                     else if (random2.Next(0, 2) == 1)
                     {
                        if (cibleBot2 != null)
                         {
-                            bot1.UtiliserCompetence(cibleBot2);
+                            bot2.UtiliserCompetence(cibleBot2);
                         } 
                     }
                     else
@@ -260,7 +261,7 @@ namespace Game
                     }
                 }
 
-                if (bot2.EstVivant())
+                if (bot3.EstVivant())
                 {
                     Random random3 = new Random();
                     var cibleBot3 = ChoisirAdversaireRandom(bot1, joueur, bot1, bot2, bot3);
@@ -268,14 +269,14 @@ namespace Game
                     {
                         if (cibleBot3 != null)
                         {
-                            bot1.Attaquer(cibleBot3);
+                            bot3.Attaquer(cibleBot3);
                         }
                     }
                     else if (random1.Next(0, 2) == 1)
                     {
                        if (cibleBot3 != null)
                         {
-                            bot1.UtiliserCompetence(cibleBot3);
+                            bot3.UtiliserCompetence(cibleBot3);
                         } 
                     }
                     else
