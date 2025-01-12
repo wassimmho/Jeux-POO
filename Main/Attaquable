@@ -1,8 +1,0 @@
-namespace Game
-{
-    public interface IAttaquable
-    {
-        void Attaquer(Personnage cible);
-        void UtiliserCompetence(Personnage cible);
-    }
-}
