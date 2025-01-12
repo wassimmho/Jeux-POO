@@ -7,10 +7,12 @@ Shadow Adventures is an action-adventure game developed in Unity with C#. Player
 
 ## Screenshots
 # Character Selection
+
 Select your character before starting the fight.
 ![characters](/Readme%20related/Screenshot%202025-01-12%20015224.png)
 
 # Gameplay Action
+
 Use buttons to attack and unleash special attacks during the battle.
 ![gameplay](/Readme%20related/Screenshot%202025-01-12%20015204.png)
 
@@ -27,8 +29,8 @@ Story-Driven Gameplay: Experience a narrative of trust, betrayal, and ambition .
 
 
 ## Contributors
-Mouhouche Wassim 
-Mehdi Benazza 
+- Mouhouche Wassim 
+- Mehdi Benazza 
 
 ## Installation
 ### Prerequisites
