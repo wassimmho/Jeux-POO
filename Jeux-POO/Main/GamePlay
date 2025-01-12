@@ -1,0 +1,316 @@
+using System;
+
+namespace Game
+{
+    public class GamePlay
+    {
+        // Méthode pour choisir un adversaire aléatoire parmi les vivants
+        private static Personnage ChoisirAdversaireRandom(Personnage attaquant, Personnage joueur, Personnage bot1, Personnage bot2, Personnage bot3)
+        {
+            Random random = new Random();
+            Personnage[] adversaires;
+
+            // Choisir les adversaires en fonction de l'attaquant
+            if (attaquant == bot1)
+            {
+                adversaires = new Personnage[] { joueur, bot2, bot3 }; // Si bot1 attaque, il choisit entre le joueur et bot2
+            }
+            else if (attaquant == bot2)
+            {
+                adversaires = new Personnage[] { joueur, bot1, bot3 }; // Si bot2 attaque, il choisit entre le joueur et bot1
+            }
+            else if (attaquant == bot3)
+            {
+                adversaires = new Personnage[] { joueur, bot1, bot2 }; // Si bot3 attaque, il chois
+            }
+            else
+            {
+                return null; // Si l'attaquant n'est pas valide, retourner null.
+            }
+
+            // Sélectionner un adversaire aléatoire parmi les vivants
+            Personnage cible = adversaires[random.Next(adversaires.Length)];
+            return cible.EstVivant() ? cible : null; // Retourner null si la cible n'est pas vivante
+        }
+
+        public static void Main(string[] args)
+        {
+            Random random = new Random();
+
+            // Création des personnages
+            Personnage guerrier = new Guerrier("Thor");
+            Personnage mage = new Mage("Floki");
+            Personnage voleur = new Voleur("Loki");
+            Personnage assassin = new Assassin("Ezio");
+
+            Personnage joueur = null;
+            Personnage bot1 = null;
+            Personnage bot2 = null;
+            Personnage bot2 = null;
+            Personnage bot3 = null;
+
+            // Demande du choix du personnage
+            while (true)
+            {
+                Console.WriteLine("Choose your main character:");
+                Console.WriteLine("1. Guerrier");
+                Console.WriteLine("2. Mage");
+                Console.WriteLine("3. Voleur");
+                Console.WriteLine("4. Assassin");
+
+                int choix;
+                if (int.TryParse(Console.ReadLine(), out choix))
+                {
+                    if (choix == 1)
+                    {
+                        joueur = guerrier;
+                        bot1 = mage;
+                        bot2 = voleur;
+                        bot3 = assassin;
+                        break;
+                    }
+                    else if (choix == 2)
+                    {
+                        joueur = mage;
+                        bot1 = guerrier;
+                        bot2 = voleur;
+                        bot3 = assassin;
+                        break;
+                    }
+                    else if (choix == 3)
+                    {
+                        joueur = voleur;
+                        bot1 = guerrier;
+                        bot2 = mage;
+                        bot3 = assassin;
+                        break;
+                    }
+                    else if (choix == 4)
+                    {
+                        joueur = assassin;
+                        bot1 = guerrier;
+                        bot2 = mage;
+                        bot3 = voleur;
+                    }
+                }
+
+                Console.WriteLine("Invalid choice. Please enter a number between 1 and 4.");
+            }
+
+            // Boucle de combat
+            int nombredecombattants = 4;
+            while (nombredecombattants > 1 && joueur.EstVivant())
+            {
+                Console.WriteLine("\n--- Round: Fight! ---");
+                Console.WriteLine("Choose an action:");
+                Console.WriteLine("1. Attack an opponent");
+                Console.WriteLine("2. Use a special skill");
+                Console.WriteLine("3. Remain passive");
+
+                int action;
+                if (int.TryParse(Console.ReadLine(), out action))
+                {
+                    switch (action)
+                    {
+                        case 1:
+                            Console.WriteLine("Who do you want to attack :\n");
+                            Console.WriteLine($"1. {bot1.GetNom()}");
+                            Console.WriteLine($"2. {bot2.GetNom()}");
+                            Console.WriteLine($"3. {bot3.GetNom()}");
+                            int choice;
+                            if (int.TryParse(Console.ReadLine(), out choix))
+                            {
+                                if (choice == 1)
+                                {
+                                    if (bot1.EstVivant())
+                                    {
+                                        joueur.Attaquer(bot1);
+                                    }
+                                    else 
+                                    {
+                                        Console.WriteLine("The opponent is already dead.");
+                                    }
+                                }
+                                if (choice == 2)
+                                {
+                                    if (bot2.EstVivant())
+                                    {
+                                        joueur.Attaquer(bot2);
+                                    }
+                                    else 
+                                    {
+                                        Console.WriteLine("The opponent is already dead.");
+                                    }
+                                }
+                                 if (choice == 3)
+                                {
+                                    if (bot3.EstVivant())
+                                    {
+                                        joueur.Attaquer(bot3);
+                                    }
+                                    else 
+                                    {
+                                        Console.WriteLine("The opponent is already dead.");
+                                    }   
+                                }
+                            }  
+                             break;  
+                            
+
+                        case 2:
+                            Console.WriteLine("Who do you want to attack with your special skill :\n");
+                            Console.WriteLine($"1. {bot1.GetNom()}");
+                            Console.WriteLine($"2. {bot2.GetNom()}");
+                            Console.WriteLine($"3. {bot3.GetNom()}");
+                            int choice1;
+                            if (int.TryParse(Console.ReadLine(), out choix))
+                            {
+                                if (choice1 == 1)
+                                {
+                                    if (bot1.EstVivant())
+                                    {
+                                        joueur.UtiliserCompetence(bot1);
+                                    }
+                                    else 
+                                    {
+                                        Console.WriteLine("The opponent is already dead.");
+                                    }
+                                }
+                                if (choice1 == 2)
+                                {
+                                    if (bot2.EstVivant())
+                                    {
+                                        joueur.UtiliserCompetence(bot2);
+                                    }
+                                    else 
+                                    {
+                                        Console.WriteLine("The opponent is already dead.");
+                                    }
+                                }
+                                 if (choice1 == 3)
+                                {
+                                    if (bot3.EstVivant())
+                                    {
+                                        joueur.UtiliserCompetence(bot3);
+                                    }
+                                    else 
+                                    {
+                                        Console.WriteLine("The opponent is already dead.");
+                                    }   
+                                }
+                            }  
+                             break; 
+
+                        case 3:
+                            Console.WriteLine($"{joueur.GetNom()} remains passive.");
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid action. You remain passive.");
+                            break;
+                    }
+                }
+
+                // Actions des bots
+                if (bot1.EstVivant())
+                {
+                    Random random1 = new Random();
+                    var cibleBot1 = ChoisirAdversaireRandom(bot1, joueur, bot1, bot2, bot3);
+                    if (random1.Next(0, 2) == 0)
+                    {
+                        if (cibleBot1 != null)
+                        {
+                            bot1.Attaquer(cibleBot1);
+                        }
+                    }
+                    else if (random1.Next(0, 2) == 1)
+                    {
+                       if (cibleBot1 != null)
+                        {
+                            bot1.UtiliserCompetence(cibleBot1);
+                        } 
+                    }
+                    else
+                    {
+                       Console.WriteLine($"{bot1.GetNom()} stays passive."); 
+                    }
+                }
+
+                if (bot2.EstVivant())
+                {
+                    Random random2 = new Random();
+                    var cibleBot2 = ChoisirAdversaireRandom(bot2, joueur, bot1, bot2, bot3);
+                    if (random2.Next(0, 2) == 0)
+                    {
+                        if (cibleBot2 != null)
+                        {
+                            bot1.Attaquer(cibleBot2);
+                        }
+                    }
+                    else if (random2.Next(0, 2) == 1)
+                    {
+                       if (cibleBot2 != null)
+                        {
+                            bot1.UtiliserCompetence(cibleBot2);
+                        } 
+                    }
+                    else
+                    {
+                       Console.WriteLine($"{bot2.GetNom()} stays passive."); 
+                    }
+                }
+
+                if (bot2.EstVivant())
+                {
+                    Random random3 = new Random();
+                    var cibleBot3 = ChoisirAdversaireRandom(bot1, joueur, bot1, bot2, bot3);
+                    if (random1.Next(0, 2) == 0)
+                    {
+                        if (cibleBot3 != null)
+                        {
+                            bot1.Attaquer(cibleBot3);
+                        }
+                    }
+                    else if (random1.Next(0, 2) == 1)
+                    {
+                       if (cibleBot3 != null)
+                        {
+                            bot1.UtiliserCompetence(cibleBot3);
+                        } 
+                    }
+                    else
+                    {
+                       Console.WriteLine($"{bot3.GetNom()} stays passive."); 
+                    }
+                }
+
+                if (!joueur.EstVivant())
+                {
+                    nombredecombattants--;
+                }
+                if (!bot1.EstVivant())
+                {
+                    nombredecombattants--;
+                }
+                if (!bot2.EstVivant())
+                {
+                    nombredecombattants--;
+                }
+                if (!bot3.EstVivant())
+                {
+                    nombredecombattants--;
+                }
+            }
+
+            Console.WriteLine("Game Over!");
+            if (joueur.EstVivant())
+            {
+                Console.WriteLine("Congratulations, you won the fight!\nYou are now the king of Eldoria");
+            }
+            else
+            {
+                Console.WriteLine("Unfortunately, you lost. Better luck next time.");
+            }
+        }
+    }
+}

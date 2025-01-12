@@ -1,0 +1,41 @@
+using System;
+
+namespace Game
+{
+    public class Voleur : Personnage
+    {
+        private static Random random = new Random();
+
+        public Voleur(string nom) : base(nom, 70, 12)
+        {
+        }
+
+        public override void Attaquer(Personnage cible)
+        {
+            Console.WriteLine($"{Nom} attacks {cible.GetNom()} by surprise!");
+            cible.RecevoirDegats(Degats);
+
+            // Chance d'une attaque critique (20%)
+            Random random = new Random();
+            if (random.Next(0, 100) < 20)
+            {
+                Console.WriteLine($"{Nom} lands a critical hit!");
+                cible.RecevoirDegats(Degats);
+            }
+        }
+
+        public override void UtiliserCompetence(Personnage cible)
+        {
+            if (!AUtiliseCompetence())
+            {
+                Console.WriteLine($"{Nom} uses his special skill: Quick attack from behind!");
+                cible.RecevoirDegats(Degats * 3);
+                UtiliserCompetence(); // Marquer la compétence comme utilisée
+            }
+            else
+            {
+                Console.WriteLine($"{Nom} has already used his special skill!");
+            }
+        }
+    }
+}
