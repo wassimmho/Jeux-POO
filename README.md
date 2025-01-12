@@ -13,7 +13,7 @@ Select your character before starting the fight.
 
 # Gameplay Action  
 
-Use buttons to attack and unleash special attacks during the battle.
+Use buttons to attack and unleash special attacks during the battle.  
 ![gameplay](/Readme%20related/Screenshot%202025-01-12%20015204.png)
 
 
@@ -22,8 +22,9 @@ Use buttons to attack and unleash special attacks during the battle.
 Story-Driven Gameplay: Experience a narrative of trust, betrayal, and ambition .
 
 ## Tools Used
-**Unity**: Game engine used to develop the game.
-**C#**: Primary programming language used for scripting the gameplay mechanics.
+**Unity**: Game engine used to develop the game.  
+**C#**: Primary programming language used for scripting the gameplay mechanics.  
+
 ![Uinty](/Readme%20related/images.png)
 ![C#](/Readme%20related/Logo_C_sharp.svg.png)
 
