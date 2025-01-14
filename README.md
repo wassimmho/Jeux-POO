@@ -5,15 +5,19 @@ You are one of four orphans, all marked by fate, raised to believe you are the r
 
 Shadow Adventures is an action-adventure game developed in Unity with C#. Players embark on a journey to find the pieces of a powerful magical shadow, facing challenges, puzzles, and other orphans vying for control of the throne.
 
+![gameui](/Readme%20related/Screenshot%202025-01-13%20180639.png)
+
 ## Screenshots
 # Character Selection  
 
 Select your character before starting the fight.
-![characters](/Readme%20related/Screenshot%202025-01-12%20015224.png)
+
+![characters](/Readme%20related/Screenshot%202025-01-13%20180853.png)
 
 # Gameplay Action  
 
 Use buttons to attack and unleash special attacks during the battle.  
+
 ![gameplay](/Readme%20related/Screenshot%202025-01-12%20015204.png)
 
 
