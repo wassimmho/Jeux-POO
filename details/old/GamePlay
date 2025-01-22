@@ -214,16 +214,17 @@ namespace Game
                 // Actions des bots
                 if (bot1.EstVivant())
                 {
-                    Random random1 = new Random(0,2);
+                    Random random1 = new Random(0);
+                    int rand1 = random1.Next(0, 2);
                     var cibleBot1 = ChoisirAdversaireRandom(bot1, joueur, bot1, bot2, bot3);
-                    if (random1 == 0)
+                    if (rand1 == 0)
                     {
                         if (cibleBot1 != null)
                         {
                             bot1.Attaquer(cibleBot1);
                         }
                     }
-                    else if (random1 == 1)
+                    else if (rand1 == 1)
                     {
                        if (cibleBot1 != null)
                         {
@@ -238,16 +239,17 @@ namespace Game
 
                 if (bot2.EstVivant())
                 {
-                    Random random2 = new Random(0,2);
+                    Random random2 = new Random(0);
+                    int rand2 = random2.Next(0, 2);
                     var cibleBot2 = ChoisirAdversaireRandom(bot2, joueur, bot1, bot2, bot3);
-                    if (random2 == 0)
+                    if (rand2 == 0)
                     {
                         if (cibleBot2 != null)
                         {
                             bot2.Attaquer(cibleBot2);
                         }
                     }
-                    else if (random2 == 1)
+                    else if (rand2 == 1)
                     {
                        if (cibleBot2 != null)
                         {
@@ -262,16 +264,17 @@ namespace Game
 
                 if (bot2.EstVivant())
                 {
-                    Random random3 = new Random(0,2);
+                    Random random3 = new Random(0);
+                    int rand3 = random3.Next(0, 2);
                     var cibleBot3 = ChoisirAdversaireRandom(bot1, joueur, bot1, bot2, bot3);
-                    if (random3 == 0)
+                    if (rand3 == 0)
                     {
                         if (cibleBot3 != null)
                         {
                             bot3.Attaquer(cibleBot3);
                         }
                     }
-                    else if (random3 == 1)
+                    else if (rand3 == 1)
                     {
                        if (cibleBot3 != null)
                         {
